@@ -15,16 +15,16 @@
 // 	.then((res) => console.log(res));
 
 // fetch (with async/await)
-const getName = async () => {
-	let myrequest = await fetch("db.txt");
-	res = await myrequest.json();
-	console.log(res);
-	document.querySelector(
-		".result"
-	).textContent = `My name is ${res.name}, I have ${res.age} years old and my email is ${res.email}.`;
-};
+// const getName = async () => {
+// 	let myrequest = await fetch("db.txt");
+// 	res = await myrequest.json();
+// 	console.log(res);
+// 	document.querySelector(
+// 		".result"
+// 	).textContent = `My name is ${res.name}, I have ${res.age} years old and my email is ${res.email}.`;
+// };
 
-document.querySelector(".get-name-btn").addEventListener("click", getName);
+// document.querySelector(".get-name-btn").addEventListener("click", getName);
 
 //******************************************************
 // axios (GET)
@@ -40,3 +40,15 @@ document.querySelector(".get-name-btn").addEventListener("click", getName);
 // 	method: "POST",
 // 	data: { name: "Enrique", age: "47" },
 // }).then((r) => console.log(r));
+
+// axios (with async/await)
+const getName = async () => {
+	let res = await axios("db.txt");
+
+	console.log(res.data);
+	document.querySelector(
+		".result"
+	).textContent = `My name is ${res.data.name}, I have ${res.data.age} years old and my email is ${res.data.email}.`;
+};
+
+document.querySelector(".get-name-btn").addEventListener("click", getName);
